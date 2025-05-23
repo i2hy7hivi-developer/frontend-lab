@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tailwind CSS</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+    <div class="container mx-auto px-4">
+
+        <h5 class="text-2xl text-pink-900">
+            Learn Tailwind CSS
+        </h5>
+
+        <button type="button" class="bg-neutral-600 hover:bg-neutral-400 px-3 py-1 rounded-sm text-gray-100">Save</button>
+
+        <!-- Tailwind card -->
+        <div class="mx-auto flex max-w-sm items-center gap-x-4 rounded-xl bg-white p-6 shadow-lg outline outline-black/5 dark:bg-slate-800 dark:shadow-none dark:-outline-offset-1 dark:outline-white/10">
+            <img class="size-12 shrink-0" src="/img/logo.svg" alt="ChitChat Logo" />
+            <div>
+                <div class="text-xl font-medium text-black dark:text-white">ChitChat</div>
+                <p class="text-gray-500 dark:text-gray-400">You have a new message!</p>
+            </div>
+        </div>
+
+        <br><br><br><br><br><br><br>
+
+        <!-- Cards with rows and cols -->
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-xl font-bold">Card 1</h2>
+                <p class="text-gray-700">This is a simple card.</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-xl font-bold">Card 2</h2>
+                <p class="text-gray-700">This is another simple card.</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-xl font-bold">Card 3</h2>
+                <p class="text-gray-700">This is yet another simple card.</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-xl font-bold">Card 3</h2>
+                <p class="text-gray-700">This is yet another simple card.</p>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
