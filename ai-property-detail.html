@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Villa Rental</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .property-image {
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .thumbnail-image {
+            height: 80px;
+            object-fit: cover;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+        .thumbnail-image:hover {
+            opacity: 0.8;
+        }
+        .price-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #155E97;
+        }
+        .rating-stars {
+            color: #ffc107;
+        }
+        .booking-card {
+            border: 1px solid #dee2e6;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .form-control:focus {
+            border-color: #155E97;
+            box-shadow: 0 0 0 0.2rem rgba(21, 94, 151, 0.25);
+        }
+        .btn-primary {
+            background-color: #155E97;
+            border-color: #155E97;
+            padding: 12px 24px;
+            font-weight: 600;
+        }
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .feature-item i {
+            margin-right: 8px;
+            color: #6c757d;
+        }
+        .map-container {
+            height: 200px;
+            background-color: #e9ecef;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">PropertyRent</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Properties</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <button class="btn btn-outline-primary me-2">Login</button>
+                    <button class="btn btn-primary">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="row">
+            <!-- Left Column - Property Images and Details -->
+            <div class="col-lg-8">
+                <!-- Image Gallery -->
+                <div class="row mb-4">
+                    <div class="col-12 mb-3">
+                        <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                             class="img-fluid property-image w-100" alt="Main property image">
+                    </div>
+                    <div class="col-12">
+                        <div class="row g-2">
+                            <div class="col-2">
+                                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" 
+                                     class="img-fluid thumbnail-image w-100" alt="Thumbnail 1">
+                            </div>
+                            <div class="col-2">
+                                <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" 
+                                     class="img-fluid thumbnail-image w-100" alt="Thumbnail 2">
+                            </div>
+                            <div class="col-2">
+                                <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" 
+                                     class="img-fluid thumbnail-image w-100" alt="Thumbnail 3">
+                            </div>
+                            <div class="col-2">
+                                <img src="https://images.unsplash.com/photo-1562182384-08115de5ee97?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" 
+                                     class="img-fluid thumbnail-image w-100" alt="Thumbnail 4">
+                            </div>
+                            <div class="col-2">
+                                <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" 
+                                     class="img-fluid thumbnail-image w-100" alt="Thumbnail 5">
+                            </div>
+                            <div class="col-2">
+                                <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" 
+                                     class="img-fluid thumbnail-image w-100" alt="Thumbnail 6">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property Details -->
+                <div class="mb-4">
+                    <h2 class="fw-bold mb-2">Luxury Modern Villa with Pool</h2>
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="rating-stars me-2">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                        <span class="text-muted">4.9 (127 reviews) • Superhost</span>
+                    </div>
+                    <p class="text-muted mb-3">
+                        <i class="bi bi-geo-alt"></i> Malibu, California, United States
+                    </p>
+                    
+                    <div class="row mb-4">
+                        <div class="col-md-3">
+                            <div class="feature-item">
+                                <i class="bi bi-people"></i>
+                                <span>8 guests</span>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="feature-item">
+                                <i class="bi bi-door-open"></i>
+                                <span>4 bedrooms</span>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="feature-item">
+                                <i class="bi bi-droplet"></i>
+                                <span>3 bathrooms</span>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="feature-item">
+                                <i class="bi bi-wifi"></i>
+                                <span>Free WiFi</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <h5 class="fw-bold mb-3">About this place</h5>
+                    <p class="text-muted">
+                        Escape to this stunning modern villa perched on the cliffs of Malibu. This architecturally designed home offers breathtaking ocean views, a private infinity pool, and luxurious amenities throughout. Perfect for a romantic getaway or family vacation.
+                    </p>
+                    <p class="text-muted">
+                        The space features floor-to-ceiling windows, an open-plan living area, gourmet kitchen, and spacious bedrooms each with en-suite bathrooms. Enjoy the outdoor terrace, BBQ area, and direct beach access.
+                    </p>
+
+                    <hr>
+
+                    <h5 class="fw-bold mb-3">Amenities</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="feature-item">
+                                <i class="bi bi-water"></i>
+                                <span>Pool</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="bi bi-car-front"></i>
+                                <span>Free parking</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="bi bi-wind"></i>
+                                <span>Air conditioning</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="bi bi-tv"></i>
+                                <span>TV</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="feature-item">
+                                <i class="bi bi-cup-hot"></i>
+                                <span>Kitchen</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="bi bi-moisture"></i>
+                                <span>Washer</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="bi bi-shield-check"></i>
+                                <span>Security cameras</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="bi bi-diagram-3"></i>
+                                <span>Gym</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Map Section -->
+                <div class="mb-4">
+                    <h5 class="fw-bold mb-3">Location</h5>
+                    <div class="map-container">
+                        <div class="text-center">
+                            <i class="bi bi-geo-alt-fill" style="font-size: 2rem;"></i>
+                            <p class="mb-0 mt-2">Interactive map would be displayed here</p>
+                            <small class="text-muted">Malibu, California</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column - Booking Card -->
+            <div class="col-lg-4">
+                <div class="booking-card p-4 position-sticky" style="top: 20px;">
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+                        <div class="price-text">$299 <small class="text-muted fw-normal">night</small></div>
+                        <div class="d-flex align-items-center">
+                            <div class="rating-stars me-1">
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <span class="fw-bold">4.9</span>
+                            <span class="text-muted ms-1">(127)</span>
+                        </div>
+                    </div>
+
+                    <form>
+                        <div class="row mb-3">
+                            <div class="col-6">
+                                <label class="form-label fw-bold">Check-in</label>
+                                <input type="date" class="form-control" value="2024-07-20">
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label fw-bold">Check-out</label>
+                                <input type="date" class="form-control" value="2024-07-25">
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Guests</label>
+                            <select class="form-select">
+                                <option>2 guests</option>
+                                <option>3 guests</option>
+                                <option>4 guests</option>
+                                <option>5 guests</option>
+                                <option>6 guests</option>
+                                <option>7 guests</option>
+                                <option>8 guests</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100 mb-3">Reserve</button>
+                        
+                        <p class="text-center text-muted small mb-3">You won't be charged yet</p>
+
+                        <div class="border-top pt-3">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>$299 × 5 nights</span>
+                                <span>$1,495</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Cleaning fee</span>
+                                <span>$75</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Service fee</span>
+                                <span>$120</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Taxes</span>
+                                <span>$89</span>
+                            </div>
+                            <hr>
+                            <div class="d-flex justify-content-between fw-bold">
+                                <span>Total</span>
+                                <span>$1,779</span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reviews Section -->
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-8">
+                <h5 class="fw-bold mb-4">
+                    <i class="bi bi-star-fill text-warning me-2"></i>
+                    4.9 · 127 reviews
+                </h5>
+                
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="d-flex align-items-start">
+                            <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center me-3" 
+                                 style="width: 40px; height: 40px;">
+                                <span class="fw-bold">JD</span>
+                            </div>
+                            <div>
+                                <div class="fw-bold">John Doe</div>
+                                <div class="text-muted small mb-2">July 2024</div>
+                                <div class="rating-stars small mb-2">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                </div>
+                                <p class="text-muted small">
+                                    Absolutely stunning property with incredible views. The host was very responsive and the place was exactly as described.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 mb-4">
+                        <div class="d-flex align-items-start">
+                            <div class="rounded-circle bg-success text-white d-flex align-items-center justify-content-center me-3" 
+                                 style="width: 40px; height: 40px;">
+                                <span class="fw-bold">SM</span>
+                            </div>
+                            <div>
+                                <div class="fw-bold">Sarah Miller</div>
+                                <div class="text-muted small mb-2">June 2024</div>
+                                <div class="rating-stars small mb-2">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                </div>
+                                <p class="text-muted small">
+                                    Perfect getaway spot! The pool area is amazing and the kitchen is fully equipped. Highly recommend!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="btn btn-outline-dark">Show all 127 reviews</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

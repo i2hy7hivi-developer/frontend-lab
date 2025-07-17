@@ -1,0 +1,78 @@
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.property-image {
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+.thumbnail-image {
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+.thumbnail-image:hover {
+    opacity: 0.8;
+}
+.price-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #155E97;
+}
+.rating-stars {
+    color: #ffc107;
+}
+.booking-card {
+    border: 1px solid #dee2e6;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.form-control:focus {
+    border-color: #155E97;
+    box-shadow: 0 0 0 0.2rem rgba(21, 94, 151, 0.25);
+}
+:root {
+    --bs-primary: #155E97;
+}
+.btn-primary {
+    background-color: #155E97;
+    border-color: #155E97;
+    padding: 12px 24px;
+    font-weight: 600;
+}
+.btn-primary:hover {
+    background-color: #134d7a;
+    border-color: #134d7a;
+}
+.btn-outline-primary {
+    color: #155E97;
+    border-color: #155E97;
+}
+.btn-outline-primary:hover {
+    background-color: #155E97;
+    border-color: #155E97;
+}
+.feature-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+.feature-item i {
+    margin-right: 8px;
+    color: #6c757d;
+}
+.map-container {
+    height: 200px;
+    background-color: #e9ecef;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6c757d;
+}
+.property-image-card {
+    background-color: #F6F8FC;
+}
