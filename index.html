@@ -8,51 +8,53 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
 	<link rel="stylesheet" href="./css/icons.min.css">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="./css/owl.carousel.min.css">
+	<link rel="stylesheet" href="./css/owl.theme.default.min.css">
 	<link rel="stylesheet" href="./css/index.css">
 	<style>
-		.thumbnail-scroll {
-		overflow-x: auto;
-		white-space: nowrap;
-		padding-bottom: 10px;
+		.dot-pill {
+			width: 20px;
+			height: 8px;
+			border-radius: 5px;
+			background-color: #666666;
+			transition: background-color 0.3s ease;
+			opacity: 0.8;
 		}
 
-		.thumbnail-scroll img {
-		height: 60px;
-		margin-right: 8px;
-		border-radius: 5px;
-		cursor: pointer;
-		transition: transform 0.2s;
+		.dot-pill.active {
+			background-color: #0d1b2a;
+			opacity: 1;
 		}
 
-		.thumbnail-scroll img:hover {
-		transform: scale(1.05);
-		border: 2px solid #0d6efd;
+		#prevSlideBtn:hover,
+		#nextSlideBtn:hover {
+			filter: brightness(1.1);
+			cursor: pointer;
+		}
+		.custom-tab-wrapper .nav-tabs {
+			background-color: #f6f9fc;
+			border-radius: 12px;
 		}
 
-		.main-image {
-		height: 400px;
-		object-fit: cover;
-		width: 100%;
-		border-radius: 12px;
+		.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+			background-color: #f6f9fc;
+		}
+		.custom-tab-wrapper .nav-link {
+			background-color: transparent;
+			border: none;
+			color: #6c757d;
+			display: flex;
+			align-items: center;
+			transition: all 0.3s ease;
 		}
 
-		.carousel-controls {
-		text-align: center;
-		margin-top: 15px;
+		.custom-tab-wrapper .nav-link i {
+			font-size: 20px;
 		}
 
-		.carousel-controls button {
-		width: 50px;
-		height: 50px;
-		border-radius: 50%;
-		}
-
-		.dashed-line {
-		display: inline-block;
-		width: 80px;
-		border-top: 2px dashed #aaa;
-		margin: 0 10px;
-		vertical-align: middle;
+		.custom-tab-wrapper .nav-link.active {
+			color: #155E97;
+			border-radius: 8px;
 		}
 	</style>
 </head>
@@ -96,66 +98,365 @@
 				<i class="ri-map-pin-fill"></i> Malibu, California
 			</button>
 		</section>
-		<section class="card border border-1 border-primary rounded-2 property-image-card">
+		<section class="card border border-1 border-primary mb-4 rounded-2 property-image-card">
 			<div class="card-body">
+				<!-- Thumbnail Strip -->
 				<div class="card">
 					<div class="card-body rounded-3">
-						<div class="thumbnail-scroll d-flex align-items-center">
-							<img src="./images/Image.png" alt="Image" class="img-fluid" onclick="setImages(1)">
-							<img src="./images/Image-2.png" alt="Image" class="img-fluid" onclick="setImages(2)">
-							<img src="./images/Image-3.png" alt="Image" class="img-fluid" onclick="setImages(3)">
-							<img src="./images/Image-4.png" alt="Image" class="img-fluid" onclick="setImages(4)">
-							<img src="./images/Image-5.png" alt="Image" class="img-fluid" onclick="setImages(5)">
-							<img src="./images/Image-6.png" alt="Image" class="img-fluid" onclick="setImages(6)">
-							<img src="./images/Image-7.png" alt="Image" class="img-fluid" onclick="setImages(7)">
+						<div class="thumbnail-scroll d-flex align-items-center overflow-auto">
+						<img src="./images/Image.png" alt="Thumb 1" class="img-fluid me-2" style="height: 60px; cursor: pointer;">
+						<img src="./images/Image-2.png" alt="Thumb 2" class="img-fluid me-2" style="height: 60px; cursor: pointer;">
+						<img src="./images/Image-3.png" alt="Thumb 3" class="img-fluid me-2" style="height: 60px; cursor: pointer;">
+						<img src="./images/Image-4.png" alt="Thumb 4" class="img-fluid me-2" style="height: 60px; cursor: pointer;">
+						<img src="./images/Image-5.png" alt="Thumb 5" class="img-fluid me-2" style="height: 60px; cursor: pointer;">
 						</div>
 					</div>
-				</div>>
-				<div class="row g-3">
+				</div>
+
+				<!-- Owl Carousel Slides -->
+				<div class="owl-carousel mt-3" id="imageSlider">
+				<div class="item">
+					<div class="row g-3">
 					<div class="col-md-6">
-						<img id="leftImage" src="./images/main-image-1.png?text=Left+1" class="main-image" />
+						<img src="./images/main-image-1.png" class="img-fluid rounded" />
 					</div>
 					<div class="col-md-6">
-						<img id="rightImage" src="./images/main-image-2.png?text=Right+1" class="main-image" />
+						<img src="./images/main-image-2.png" class="img-fluid rounded" />
+					</div>
 					</div>
 				</div>
-				 <div class="carousel-controls mt-4">
-					<button class="btn btn-outline-secondary" onclick="prevSlide()">
-					<i class="ri-arrow-left-line"></i>
-					</button>
-					<span class="dashed-line"></span>
-					<button class="btn btn-outline-primary" onclick="nextSlide()">
-					<i class="ri-arrow-right-line"></i>
-					</button>
+				<div class="item">
+					<div class="row g-3">
+					<div class="col-md-6">
+						<img src="./images/Image-3.png" class="img-fluid rounded" />
+					</div>
+					<div class="col-md-6">
+						<img src="./images/Image-4.png" class="img-fluid rounded" />
+					</div>
+					</div>
+				</div>
+				<div class="item">
+					<div class="row g-3">
+					<div class="col-md-6">
+						<img src="./images/Image-3.png" class="img-fluid rounded" />
+					</div>
+					<div class="col-md-6">
+						<img src="./images/Image-4.png" class="img-fluid rounded" />
+					</div>
+					</div>
+				</div>
+				<div class="item">
+					<div class="row g-3">
+					<div class="col-md-6">
+						<img src="./images/Image-3.png" class="img-fluid rounded" />
+					</div>
+					<div class="col-md-6">
+						<img src="./images/Image-4.png" class="img-fluid rounded" />
+					</div>
+					</div>
+				</div>
+				<div class="item">
+					<div class="row g-3">
+					<div class="col-md-6">
+						<img src="./images/Image-3.png" class="img-fluid rounded" />
+					</div>
+					<div class="col-md-6">
+						<img src="./images/Image-4.png" class="img-fluid rounded" />
+					</div>
+					</div>
+				</div>
+				<!-- Add more .item blocks as needed -->
+				</div>
+				<!-- Carousel Controls Styled Like Image -->
+				<div class="d-flex justify-content-between align-items-center bg-white rounded-pill px-3 py-2 shadow-sm" style="max-width: 360px; margin: auto;">
+
+				
+				<!-- Left Arrow -->
+				<button id="prevSlideBtn" class="d-flex justify-content-center align-items-center" style="
+					width: 48px;
+					height: 48px;
+					border-radius: 50%;
+					border: 2px solid #0d1b2a;
+					background-color: white;
+					color: #0d1b2a;
+				">
+					<i class="ri-arrow-left-line" style="font-size: 20px;"></i>
+				</button>
+
+				<!-- Dots Track -->
+				<div class="d-flex flex-grow-1 justify-content-center align-items-center gap-2">
+					<div class="dot-pill active"></div>
+					<div class="dot-pill"></div>
+					<div class="dot-pill"></div>
+					<div class="dot-pill"></div>
+					<div class="dot-pill"></div>
+				</div>
+
+				<!-- Right Arrow -->
+				<button id="nextSlideBtn" class="d-flex justify-content-center align-items-center" style="
+					width: 48px;
+					height: 48px;
+					border-radius: 50%;
+					border: none;
+					background-color: #0d1b2a;
+					color: white;
+				">
+					<i class="ri-arrow-right-line" style="font-size: 20px;"></i>
+				</button>
+				</div>
+			</div>
+		</section>
+		<section class="mb-4">
+			<div class="row">
+				<div class="col-md-8">
+					<!-- Navigation Tabs -->
+					<nav class="custom-tab-wrapper my-4">
+						<div class="nav nav-tabs border-0 d-flex justify-content-around py-2 px-3" id="nav-tab" role="tablist">
+							<button class="nav-link active fw-semibold d-flex align-items-center gap-2 px-4 py-2" id="nav-overview-tab" data-bs-toggle="tab" data-bs-target="#nav-overview" type="button" role="tab" aria-controls="nav-overview" aria-selected="true">
+								<i class="ri-layout-grid-line"></i> Overview
+							</button>
+							<button class="nav-link fw-semibold d-flex align-items-center gap-2 px-4 py-2" id="nav-units-tab" data-bs-toggle="tab" data-bs-target="#nav-units" type="button" role="tab" aria-controls="nav-units" aria-selected="false">
+								<i class="ri-grid-line"></i> Units
+							</button>
+							<button class="nav-link fw-semibold d-flex align-items-center gap-2 px-4 py-2" id="nav-amenities-tab" data-bs-toggle="tab" data-bs-target="#nav-amenities" type="button" role="tab" aria-controls="nav-amenities" aria-selected="false">
+								<i class="ri-wireless-charging-line"></i> Amenities
+							</button>
+						</div>
+					</nav>
+
+					
+					<!-- Tab Content -->
+					<div class="tab-content mt-4" id="nav-tabContent">
+						<!-- Overview Tab -->
+						<div class="tab-pane fade show active" id="nav-overview" role="tabpanel" aria-labelledby="nav-overview-tab">
+							<div class="mb-4">
+								<h5 class="fw-bold mb-3">Property Description</h5>
+								<p class="text-muted">
+									Discover luxury at its finest in this stunning Seaside Serenity Villa. Located on the pristine shores of Malibu, this exquisite property offers breathtaking ocean views, modern amenities, and unparalleled comfort. Perfect for a romantic getaway or family vacation.
+								</p>
+							</div>
+							
+							<div class="row g-4">
+								<div class="col-md-6">
+									<div class="d-flex align-items-center mb-3">
+										<i class="ri-building-line me-2 text-primary fs-5"></i>
+										<span class="fw-semibold">4 Bedrooms</span>
+									</div>
+									<div class="d-flex align-items-center mb-3">
+										<i class="ri-car-line me-2 text-primary fs-5"></i>
+										<span class="fw-semibold">2 Car Garage</span>
+									</div>
+									<div class="d-flex align-items-center">
+										<i class="ri-home-4-line me-2 text-primary fs-5"></i>
+										<span class="fw-semibold">3,200 sq ft</span>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="d-flex align-items-center mb-3">
+										<i class="ri-drop-line me-2 text-primary fs-5"></i>
+										<span class="fw-semibold">3 Bathrooms</span>
+									</div>
+									<div class="d-flex align-items-center mb-3">
+										<i class="ri-calendar-line me-2 text-primary fs-5"></i>
+										<span class="fw-semibold">Built in 2018</span>
+									</div>
+									<div class="d-flex align-items-center">
+										<i class="ri-landscape-line me-2 text-primary fs-5"></i>
+										<span class="fw-semibold">Ocean View</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<!-- Amenities Tab -->
+						<div class="tab-pane fade" id="nav-amenities" role="tabpanel" aria-labelledby="nav-amenities-tab">
+							<h5 class="fw-bold mb-4">Property Amenities</h5>
+							<div class="row g-3">
+								<div class="col-md-6">
+									<div class="d-flex align-items-center mb-3">
+										<i class="ri-wifi-line me-3 text-success fs-5"></i>
+										<span>High-Speed WiFi</span>
+									</div>
+									<div class="d-flex align-items-center mb-3">
+										<i class="ri-tv-line me-3 text-success fs-5"></i>
+										<span>Smart TV</span>
+									</div>
+									<div class="d-flex align-items-center mb-3">
+										<i class="ri-restaurant-line me-3 text-success fs-5"></i>
+										<span>Full Kitchen</span>
+									</div>
+									<div class="d-flex align-items-center mb-3">
+										<i class="ri-washing-machine-line me-3 text-success fs-5"></i>
+										<span>Washer & Dryer</span>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="d-flex align-items-center mb-3">
+										<i class="ri-temp-cold-line me-3 text-success fs-5"></i>
+										<span>Air Conditioning</span>
+									</div>
+									<div class="d-flex align-items-center mb-3">
+										<i class="ri-parking-line me-3 text-success fs-5"></i>
+										<span>Free Parking</span>
+									</div>
+									<div class="d-flex align-items-center mb-3">
+										<i class="ri-gamepad-line me-3 text-success fs-5"></i>
+										<span>Pool & Hot Tub</span>
+									</div>
+									<div class="d-flex align-items-center mb-3">
+										<i class="ri-shield-check-line me-3 text-success fs-5"></i>
+										<span>Security System</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<!-- Location Tab -->
+						<div class="tab-pane fade" id="nav-location" role="tabpanel" aria-labelledby="nav-location-tab">
+							<h5 class="fw-bold mb-4">Location & Nearby</h5>
+							<div class="mb-4">
+								<p class="text-muted">Located in the heart of Malibu, California, with easy access to beaches, restaurants, and entertainment.</p>
+							</div>
+							<div class="row g-3">
+								<div class="col-md-6">
+									<div class="d-flex align-items-center mb-3">
+										<i class="ri-map-pin-line me-3 text-info fs-5"></i>
+										<div>
+											<div class="fw-semibold">Malibu Beach</div>
+											<small class="text-muted">2 minutes walk</small>
+										</div>
+									</div>
+									<div class="d-flex align-items-center mb-3">
+										<i class="ri-store-line me-3 text-info fs-5"></i>
+										<div>
+											<div class="fw-semibold">Shopping Center</div>
+											<small class="text-muted">5 minutes drive</small>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="d-flex align-items-center mb-3">
+										<i class="ri-restaurant-2-line me-3 text-info fs-5"></i>
+										<div>
+											<div class="fw-semibold">Fine Dining</div>
+											<small class="text-muted">3 minutes walk</small>
+										</div>
+									</div>
+									<div class="d-flex align-items-center mb-3">
+										<i class="ri-plane-line me-3 text-info fs-5"></i>
+										<div>
+											<div class="fw-semibold">LAX Airport</div>
+											<small class="text-muted">45 minutes drive</small>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<!-- Reviews Tab -->
+						<div class="tab-pane fade" id="nav-reviews" role="tabpanel" aria-labelledby="nav-reviews-tab">
+							<div class="d-flex justify-content-between align-items-center mb-4">
+								<h5 class="fw-bold mb-0">Guest Reviews</h5>
+								<div class="d-flex align-items-center">
+									<span class="badge bg-success me-2">4.9</span>
+									<div class="text-warning">
+										<i class="ri-star-fill"></i>
+										<i class="ri-star-fill"></i>
+										<i class="ri-star-fill"></i>
+										<i class="ri-star-fill"></i>
+										<i class="ri-star-fill"></i>
+									</div>
+								</div>
+							</div>
+							
+							<div class="card mb-3">
+								<div class="card-body">
+									<div class="d-flex justify-content-between align-items-start mb-2">
+										<div class="fw-semibold">Sarah Johnson</div>
+										<small class="text-muted">2 weeks ago</small>
+									</div>
+									<div class="text-warning mb-2">
+										<i class="ri-star-fill"></i>
+										<i class="ri-star-fill"></i>
+										<i class="ri-star-fill"></i>
+										<i class="ri-star-fill"></i>
+										<i class="ri-star-fill"></i>
+									</div>
+									<p class="text-muted mb-0">"Absolutely stunning property! The ocean view is breathtaking and the amenities are top-notch. Perfect for our family vacation."</p>
+								</div>
+							</div>
+							
+							<div class="card">
+								<div class="card-body">
+									<div class="d-flex justify-content-between align-items-start mb-2">
+										<div class="fw-semibold">Michael Chen</div>
+										<small class="text-muted">1 month ago</small>
+									</div>
+									<div class="text-warning mb-2">
+										<i class="ri-star-fill"></i>
+										<i class="ri-star-fill"></i>
+										<i class="ri-star-fill"></i>
+										<i class="ri-star-fill"></i>
+										<i class="ri-star-line"></i>
+									</div>
+									<p class="text-muted mb-0">"Great location and beautiful villa. The host was very responsive and helpful. Highly recommend!"</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div>
+						<span class="badge badge-primary rounded-pill px-3 py-2"><i class="ri-heart-fill"></i></span>
+						<span class="badge badge-primary rounded-pill px-3 py-2"><i class="ri-eye-line"></i></span>
+						<span class="badge badge-primary rounded-pill px-3 py-2"><i class="ri-send-plane-line"></i></span>
+					</div>
 				</div>
 			</div>
 		</section>
 	</main>
+<script src="./js/jquery.min.js"></script>
+<script src="./js/owl.carousel.min.js"></script>
 <script>
-  const slides = [
-    { left: './images/Image.png?text=Left+1', right: './images/Image-2.png?text=Right+1' },
-    { left: './images/Image-3.png?text=Left+2', right: './images/Image-4.png?text=Right+2' },
-    { left: './images/Image-5.png?text=Left+3', right: './images/Image-6.png?text=Right+3' },
-    { left: './images/Image-7.png?text=Left+4', right: './images/Image-7.png?text=Right+4' },
-    // { left: './images/Image-9.png?text=Left+5', right: './images/Image-10.png?text=Right+5' },
-  ];
-  let currentIndex = 0;
+let owl = $('#imageSlider');
 
-  function setImages(index) {
-    currentIndex = index - 1;
-    document.getElementById('leftImage').src = slides[currentIndex].left;
-    document.getElementById('rightImage').src = slides[currentIndex].right;
-  }
+owl.owlCarousel({
+	items: 1,
+	nav: false,
+	dots: true,
+	loop: true,
+	margin: 10
+});
 
-  function nextSlide() {
-    currentIndex = (currentIndex + 1) % slides.length;
-    setImages(currentIndex + 1);
-  }
+$('#prevSlideBtn').click(function () {
+	owl.trigger('prev.owl.carousel');
+});
 
-  function prevSlide() {
-    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-    setImages(currentIndex + 1);
-  }
+$('#nextSlideBtn').click(function () {
+	owl.trigger('next.owl.carousel');
+});
+
+function goToSlide(index) {
+	owl.trigger('to.owl.carousel', [index, 300]);
+}
+let totalDots = document.querySelectorAll('.dot-pill').length;
+let currentIndex = 0;
+
+function updateDotIndicator(index) {
+document.querySelectorAll('.dot-pill').forEach((el, i) => {
+	el.classList.toggle('active', i === index);
+});
+}
+
+document.getElementById('nextSlideBtn').addEventListener('click', () => {
+currentIndex = (currentIndex + 1) % totalDots;
+updateDotIndicator(currentIndex);
+});
+
+document.getElementById('prevSlideBtn').addEventListener('click', () => {
+currentIndex = (currentIndex - 1 + totalDots) % totalDots;
+updateDotIndicator(currentIndex);
+});
 </script>
 </body>
 </html>
