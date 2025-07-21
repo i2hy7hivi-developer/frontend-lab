@@ -56,6 +56,110 @@
 			color: #155E97;
 			border-radius: 8px;
 		}
+		.modal-fullscreen .modal-body {
+			height: 100vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			overflow: hidden; /* Prevent scrolling */
+		}
+
+		.modal-fullscreen .modal-body img {
+			max-height: 100%;
+			max-width: 100%;
+			object-fit: contain;
+		}
+
+		/* Custom FSLightbox Styles */
+		#fslightboxModal .modal-content {
+			background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+		}
+
+		#fslightboxImage {
+			max-height: 70vh;
+			object-fit: contain;
+			transition: all 0.3s ease;
+			border-radius: 8px;
+		}
+
+		#fsPrevBtn, #fsNextBtn {
+			transition: all 0.3s ease;
+			z-index: 10;
+		}
+
+		#fsPrevBtn:hover, #fsNextBtn:hover {
+			opacity: 1 !important;
+			transform: scale(1.1);
+		}
+
+		.unit-tab {
+			transition: all 0.3s ease;
+			border-radius: 6px;
+		}
+
+		.unit-tab:hover {
+			transform: translateY(-1px);
+		}
+
+		.thumbnail-item {
+			width: 80px;
+			height: 60px;
+			border-radius: 6px;
+			overflow: hidden;
+			cursor: pointer;
+			transition: all 0.3s ease;
+			border: 2px solid transparent;
+		}
+
+		.thumbnail-item:hover {
+			transform: scale(1.05);
+			border-color: #007bff;
+		}
+
+		.thumbnail-item.active {
+			border-color: #007bff;
+			box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+		}
+
+		.thumbnail-item img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+
+		#thumbnailGallery {
+			scrollbar-width: thin;
+			scrollbar-color: #666 #333;
+		}
+
+		#thumbnailGallery::-webkit-scrollbar {
+			height: 6px;
+		}
+
+		#thumbnailGallery::-webkit-scrollbar-track {
+			background: #333;
+			border-radius: 3px;
+		}
+
+		#thumbnailGallery::-webkit-scrollbar-thumb {
+			background: #666;
+			border-radius: 3px;
+		}
+
+		#thumbnailGallery::-webkit-scrollbar-thumb:hover {
+			background: #888;
+		}
+
+		/* Image fade transition */
+		.image-fade {
+			opacity: 0;
+			transform: scale(0.95);
+		}
+
+		.image-fade.show {
+			opacity: 1;
+			transform: scale(1);
+		}
 	</style>
 </head>
 <body>
@@ -115,56 +219,56 @@
 
 				<!-- Owl Carousel Slides -->
 				<div class="owl-carousel mt-3" id="imageSlider">
-				<div class="item">
-					<div class="row g-3">
-					<div class="col-md-6">
-						<img src="./images/main-image-1.png" class="img-fluid rounded" />
+					<div class="item">
+						<div class="row g-3">
+						<div class="col-md-6">
+							<img src="./images/main-image-1.png" class="img-fluid rounded" />
+						</div>
+						<div class="col-md-6">
+							<img src="./images/main-image-2.png" class="img-fluid rounded" />
+						</div>
+						</div>
 					</div>
-					<div class="col-md-6">
-						<img src="./images/main-image-2.png" class="img-fluid rounded" />
+					<div class="item">
+						<div class="row g-3">
+						<div class="col-md-6">
+							<img src="./images/Image-3.png" class="img-fluid rounded" />
+						</div>
+						<div class="col-md-6">
+							<img src="./images/Image-4.png" class="img-fluid rounded" />
+						</div>
+						</div>
 					</div>
+					<div class="item">
+						<div class="row g-3">
+						<div class="col-md-6">
+							<img src="./images/Image-3.png" class="img-fluid rounded" />
+						</div>
+						<div class="col-md-6">
+							<img src="./images/Image-4.png" class="img-fluid rounded" />
+						</div>
+						</div>
 					</div>
-				</div>
-				<div class="item">
-					<div class="row g-3">
-					<div class="col-md-6">
-						<img src="./images/Image-3.png" class="img-fluid rounded" />
+					<div class="item">
+						<div class="row g-3">
+						<div class="col-md-6">
+							<img src="./images/Image-3.png" class="img-fluid rounded" />
+						</div>
+						<div class="col-md-6">
+							<img src="./images/Image-4.png" class="img-fluid rounded" />
+						</div>
+						</div>
 					</div>
-					<div class="col-md-6">
-						<img src="./images/Image-4.png" class="img-fluid rounded" />
+					<div class="item">
+						<div class="row g-3">
+						<div class="col-md-6">
+							<img src="./images/Image-3.png" class="img-fluid rounded" />
+						</div>
+						<div class="col-md-6">
+							<img src="./images/Image-4.png" class="img-fluid rounded" />
+						</div>
+						</div>
 					</div>
-					</div>
-				</div>
-				<div class="item">
-					<div class="row g-3">
-					<div class="col-md-6">
-						<img src="./images/Image-3.png" class="img-fluid rounded" />
-					</div>
-					<div class="col-md-6">
-						<img src="./images/Image-4.png" class="img-fluid rounded" />
-					</div>
-					</div>
-				</div>
-				<div class="item">
-					<div class="row g-3">
-					<div class="col-md-6">
-						<img src="./images/Image-3.png" class="img-fluid rounded" />
-					</div>
-					<div class="col-md-6">
-						<img src="./images/Image-4.png" class="img-fluid rounded" />
-					</div>
-					</div>
-				</div>
-				<div class="item">
-					<div class="row g-3">
-					<div class="col-md-6">
-						<img src="./images/Image-3.png" class="img-fluid rounded" />
-					</div>
-					<div class="col-md-6">
-						<img src="./images/Image-4.png" class="img-fluid rounded" />
-					</div>
-					</div>
-				</div>
 				<!-- Add more .item blocks as needed -->
 				</div>
 				<!-- Carousel Controls Styled Like Image -->
@@ -411,51 +515,337 @@
 						<span class="badge badge-primary rounded-pill px-3 py-2"><i class="ri-eye-line"></i></span>
 						<span class="badge badge-primary rounded-pill px-3 py-2"><i class="ri-send-plane-line"></i></span>
 					</div>
+					<div class="card my-3" style="background-color: #f6f8fc; border-radius: 1.3rem;">
+						<div class="card-body">
+							<h4>Contact Info:</h4>
+							<div class="my-3">
+								<img src="./images/svg-icons/envelope.svg" alt="envelope" class="img-fluid mb-2" style="width: 24px;"> support@myrentalspot.com
+							</div>
+							<div class="my-3">
+								<img src="./images/svg-icons/phone.svg" alt="phone" class="img-fluid mb-2" style="width: 24px;"> (123) 456-7890
+							</div>
+						</div>
+					</div>
+					<button class="btn btn-primary w-100 mt-3">
+						<i class="ri-flag-line"></i>
+						Report This Listing
+					</button>
 				</div>
 			</div>
 		</section>
+
+		<!-- Lightbox Trigger Buttons -->
+		<div class="d-flex gap-2 mb-4">
+			<button type="button" class="btn btn-primary launch-lightbox" data-index="0">
+				<i class="ri-image-line"></i> View Gallery
+			</button>
+			<button type="button" class="btn btn-outline-primary launch-lightbox" data-index="1">
+				<i class="ri-eye-line"></i> View Image 2
+			</button>
+		</div>
+
+		<!-- Custom FSLightbox Modal -->
+		<div class="modal fade" id="fslightboxModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="fslightboxLabel" aria-hidden="true">
+			<div class="modal-dialog modal-fullscreen">
+				<div class="modal-content bg-dark">
+					<!-- Modal Header -->
+					<div class="modal-header border-0 bg-dark text-white">
+						<div class="d-flex align-items-center">
+							<button type="button" class="btn btn-outline-light me-3" id="backBtn">
+								<i class="ri-arrow-left-line"></i> Back
+							</button>
+							<span class="fs-6 text-muted" id="imageCounter">1 of 5</span>
+						</div>
+						<button type="button" class="btn btn-outline-light" data-bs-dismiss="modal" aria-label="Close">
+							<i class="ri-close-line"></i>
+						</button>
+					</div>
+
+					<!-- Unit Selection Tabs -->
+					<div class="px-4 py-2 bg-dark">
+						<div class="d-flex gap-2" id="unitTabs">
+							<button class="btn btn-sm btn-primary unit-tab active" data-unit="overview">Overview</button>
+							<button class="btn btn-sm btn-outline-light unit-tab" data-unit="unit1">Unit 1</button>
+							<button class="btn btn-sm btn-outline-light unit-tab" data-unit="unit2">Unit 2</button>
+							<button class="btn btn-sm btn-outline-light unit-tab" data-unit="unit3">Unit 3</button>
+							<button class="btn btn-sm btn-outline-light unit-tab" data-unit="unit4">Unit 4</button>
+						</div>
+					</div>
+
+					<!-- Modal Body -->
+					<div class="modal-body p-0 position-relative">
+						<!-- Main Image Container -->
+						<div class="position-relative h-100 d-flex align-items-center justify-content-center">
+							<img id="fslightboxImage" class="img-fluid" src="" alt="Gallery Image" style="max-height: 70vh; object-fit: contain;">
+							
+							<!-- Navigation Arrows -->
+							<button type="button" class="btn btn-light position-absolute start-0 top-50 translate-middle-y ms-3" id="fsPrevBtn" style="width: 50px; height: 50px; border-radius: 50%; opacity: 0.8;">
+								<i class="ri-arrow-left-line"></i>
+							</button>
+							<button type="button" class="btn btn-light position-absolute end-0 top-50 translate-middle-y me-3" id="fsNextBtn" style="width: 50px; height: 50px; border-radius: 50%; opacity: 0.8;">
+								<i class="ri-arrow-right-line"></i>
+							</button>
+						</div>
+
+						<!-- Thumbnail Gallery -->
+						<div class="position-absolute bottom-0 start-0 end-0 bg-dark bg-opacity-75 p-3">
+							<div class="d-flex gap-2 overflow-auto" id="thumbnailGallery">
+								<!-- Thumbnails will be populated by JavaScript -->
+							</div>
+						</div>
+					</div>
+
+					<!-- Modal Footer -->
+					<div class="modal-footer border-0 bg-dark text-white">
+						<div class="d-flex justify-content-between align-items-center w-100">
+							<div class="text-muted">
+								<span id="imageAddress">6G Ave, Pedro A. Rivera Km.4. #701, NY 41000</span>
+							</div>
+							<button class="btn btn-primary">
+								<i class="ri-calendar-line"></i> Schedule a showing?
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</main>
 <script src="./js/jquery.min.js"></script>
 <script src="./js/owl.carousel.min.js"></script>
 <script>
-let owl = $('#imageSlider');
+// Custom FSLightbox Implementation
+class CustomFSLightbox {
+    constructor() {
+        this.images = [
+            './images/main-image-1.png',
+            './images/main-image-2.png',
+            './images/Image-3.png',
+            './images/Image-4.png',
+            './images/Image-5.png',
+            './images/Image-6.png',
+            './images/Image-7.png'
+        ];
+        this.currentIndex = 0;
+        this.currentUnit = 'overview';
+        this.isTransitioning = false;
+        
+        this.init();
+    }
 
-owl.owlCarousel({
-	items: 1,
-	nav: false,
-	dots: true,
-	loop: true,
-	margin: 10
-});
+    init() {
+        this.bindEvents();
+        this.populateThumbnails();
+        this.updateImageCounter();
+    }
 
-$('#prevSlideBtn').click(function () {
-	owl.trigger('prev.owl.carousel');
-});
+    bindEvents() {
+        // Lightbox trigger buttons
+        $(document).on('click', '.launch-lightbox', (e) => {
+            e.preventDefault();
+            this.currentIndex = parseInt($(e.currentTarget).data('index'));
+            this.openLightbox();
+        });
 
-$('#nextSlideBtn').click(function () {
-	owl.trigger('next.owl.carousel');
-});
+        // Navigation buttons
+        $('#fsPrevBtn').on('click', () => this.previousImage());
+        $('#fsNextBtn').on('click', () => this.nextImage());
 
-function goToSlide(index) {
-	owl.trigger('to.owl.carousel', [index, 300]);
+        // Unit tabs
+        $('.unit-tab').on('click', (e) => {
+            const unit = $(e.currentTarget).data('unit');
+            this.switchUnit(unit);
+        });
+
+        // Thumbnail clicks
+        $(document).on('click', '.thumbnail-item', (e) => {
+            const index = parseInt($(e.currentTarget).data('index'));
+            this.goToImage(index);
+        });
+
+        // Keyboard navigation
+        $(document).on('keydown', (e) => {
+            if ($('#fslightboxModal').hasClass('show')) {
+                switch(e.key) {
+                    case 'ArrowLeft':
+                        e.preventDefault();
+                        this.previousImage();
+                        break;
+                    case 'ArrowRight':
+                        e.preventDefault();
+                        this.nextImage();
+                        break;
+                    case 'Escape':
+                        e.preventDefault();
+                        this.closeLightbox();
+                        break;
+                }
+            }
+        });
+
+        // Back button
+        $('#backBtn').on('click', () => this.closeLightbox());
+
+        // Modal close events
+        $('#fslightboxModal').on('hidden.bs.modal', () => {
+            this.resetLightbox();
+        });
+    }
+
+    openLightbox() {
+        $('#fslightboxModal').modal('show');
+        this.updateMainImage();
+        this.updateThumbnailSelection();
+        this.updateImageCounter();
+    }
+
+    closeLightbox() {
+        $('#fslightboxModal').modal('hide');
+    }
+
+    resetLightbox() {
+        this.currentIndex = 0;
+        this.currentUnit = 'overview';
+        this.updateUnitTabs();
+    }
+
+    previousImage() {
+        if (this.isTransitioning) return;
+        
+        this.currentIndex = (this.currentIndex - 1 + this.images.length) % this.images.length;
+        this.updateMainImage();
+        this.updateThumbnailSelection();
+        this.updateImageCounter();
+    }
+
+    nextImage() {
+        if (this.isTransitioning) return;
+        
+        this.currentIndex = (this.currentIndex + 1) % this.images.length;
+        this.updateMainImage();
+        this.updateThumbnailSelection();
+        this.updateImageCounter();
+    }
+
+    goToImage(index) {
+        if (this.isTransitioning || index === this.currentIndex) return;
+        
+        this.currentIndex = index;
+        this.updateMainImage();
+        this.updateThumbnailSelection();
+        this.updateImageCounter();
+    }
+
+    switchUnit(unit) {
+        this.currentUnit = unit;
+        this.updateUnitTabs();
+        // Here you could load different images based on unit
+        // For now, we'll just update the UI
+    }
+
+    updateMainImage() {
+        const $image = $('#fslightboxImage');
+        
+        // Add fade out effect
+        $image.addClass('image-fade');
+        
+        setTimeout(() => {
+            $image.attr('src', this.images[this.currentIndex]);
+            $image.removeClass('image-fade').addClass('show');
+        }, 150);
+    }
+
+    updateThumbnailSelection() {
+        $('.thumbnail-item').removeClass('active');
+        $(`.thumbnail-item[data-index="${this.currentIndex}"]`).addClass('active');
+        
+        // Scroll thumbnail into view
+        const $activeThumb = $(`.thumbnail-item[data-index="${this.currentIndex}"]`);
+        const $container = $('#thumbnailGallery');
+        const containerWidth = $container.width();
+        const thumbWidth = 80 + 8; // width + gap
+        const thumbPosition = this.currentIndex * thumbWidth;
+        
+        if (thumbPosition > containerWidth / 2) {
+            $container.scrollLeft(thumbPosition - containerWidth / 2 + thumbWidth / 2);
+        } else {
+            $container.scrollLeft(0);
+        }
+    }
+
+    updateImageCounter() {
+        $('#imageCounter').text(`${this.currentIndex + 1} of ${this.images.length}`);
+    }
+
+    updateUnitTabs() {
+        $('.unit-tab').removeClass('btn-primary active').addClass('btn-outline-light');
+        $(`.unit-tab[data-unit="${this.currentUnit}"]`).removeClass('btn-outline-light').addClass('btn-primary active');
+    }
+
+    populateThumbnails() {
+        const $gallery = $('#thumbnailGallery');
+        $gallery.empty();
+        
+        this.images.forEach((image, index) => {
+            const thumbnail = `
+                <div class="thumbnail-item ${index === 0 ? 'active' : ''}" data-index="${index}">
+                    <img src="${image}" alt="Thumbnail ${index + 1}">
+                </div>
+            `;
+            $gallery.append(thumbnail);
+        });
+    }
 }
-let totalDots = document.querySelectorAll('.dot-pill').length;
-let currentIndex = 0;
 
-function updateDotIndicator(index) {
-document.querySelectorAll('.dot-pill').forEach((el, i) => {
-	el.classList.toggle('active', i === index);
-});
-}
+// Initialize Owl Carousel for main slider
+$(document).ready(function() {
+    // Initialize custom FSLightbox
+    const fslightbox = new CustomFSLightbox();
+    
+    // Initialize main image slider
+    let owl = $('#imageSlider');
+    owl.owlCarousel({
+        items: 1,
+        nav: false,
+        dots: false,
+        loop: true,
+        margin: 10,
+        autoplay: false
+    });
 
-document.getElementById('nextSlideBtn').addEventListener('click', () => {
-currentIndex = (currentIndex + 1) % totalDots;
-updateDotIndicator(currentIndex);
-});
+    // Main slider navigation
+    $('#prevSlideBtn').click(function () {
+        owl.trigger('prev.owl.carousel');
+        updateDotIndicator();
+    });
 
-document.getElementById('prevSlideBtn').addEventListener('click', () => {
-currentIndex = (currentIndex - 1 + totalDots) % totalDots;
-updateDotIndicator(currentIndex);
+    $('#nextSlideBtn').click(function () {
+        owl.trigger('next.owl.carousel');
+        updateDotIndicator();
+    });
+
+    // Dot indicator functionality
+    function updateDotIndicator() {
+        const currentSlide = owl.find('.owl-item.active').index();
+        $('.dot-pill').removeClass('active');
+        $('.dot-pill').eq(currentSlide).addClass('active');
+    }
+
+    // Initialize dot indicator
+    updateDotIndicator();
+
+    // Thumbnail click to open lightbox
+    $('.thumbnail-scroll img').on('click', function() {
+        const index = $(this).index();
+        fslightbox.currentIndex = index;
+        fslightbox.openLightbox();
+    });
+
+    // Make main slider images clickable to open lightbox
+    $('#imageSlider img').on('click', function() {
+        const slideIndex = $(this).closest('.owl-item').index();
+        fslightbox.currentIndex = slideIndex;
+        fslightbox.openLightbox();
+    });
 });
 </script>
 </body>
